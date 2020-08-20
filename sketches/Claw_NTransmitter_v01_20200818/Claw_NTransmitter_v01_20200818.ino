@@ -6,8 +6,10 @@ byte channel = 48;
 void setup()
 {
   Serial.begin(115200);
+  
   pinMode(BUTTON_PIN, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+  
   Serial.print("Starting LoRa...");
   if (!LoRa.begin(915E6)) //한국 주파수 
   {
@@ -39,8 +41,10 @@ void loop()
 
   if(success == 1) {
     Serial.println("Ok");
+    digitalWrite(LED_BUILTIN, HIGH);
   } else {
     Serial.println("Failed");
+    digitalWrite(LED_BUILTIN, LOW);
   }
   delay(1);
 }
